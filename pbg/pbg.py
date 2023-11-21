@@ -23,6 +23,7 @@ class PBG(BaseEstimator, ClassifierMixin):
         self.global_max_itr = global_max_itr
         self.local_threshold = local_threshold
         self.global_threshold = global_threshold
+        self.save_interval = save_interval
         self.feature_names = feature_names
         self.is_fitted_ = False
         self.log_alpha = np.log(self.alpha)
@@ -101,7 +102,7 @@ class PBG(BaseEstimator, ClassifierMixin):
         Returns:
             [type]: A reduced version of matrix X. This corresponds to document_X_topics matrix
         """
-        if not self.X != X:
+        if (not (np.not_equal(self.X, X).all())):
             return np.exp(self.log_A)
         log_A_backup, X_backup, local_max_itr_backup = self.log_A, self.X, self.local_max_itr
         ndocs = X.shape[0]
