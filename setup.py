@@ -9,7 +9,7 @@ setup(
     author_email='thiagodepaulo@gmail.com',
     license='',
     packages=['pbg'],
-    install_requires=['sklearn',
+    install_requires=['scikit-learn',
                       'numpy',
                       'tqdm',
                       'nltk',
